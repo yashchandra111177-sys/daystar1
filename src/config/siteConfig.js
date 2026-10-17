@@ -1,9 +1,9 @@
 export const siteConfig = {
   brandName: 'Daystar',
   tagline: 'Hydration, made brighter.',
-  whatsappPhone: '919702036934',
+  whatsappPhone: '918286604985',
   contactEmail: 'hello@daystar.example',
-  contactPhone: '+91 99999 99999',
+  contactPhone: '+918286604985',
   instagramUrl: 'https://www.instagram.com/',
 }
 
