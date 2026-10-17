@@ -40,6 +40,8 @@ Requirements: Node.js 20.11 or newer, npm, a MongoDB Atlas cluster, and (optiona
 
    The admin script refuses to create an account if one already exists. There is no public registration endpoint. Remove `ADMIN_SETUP_PASSWORD` (and `ADMIN_SETUP_EMAIL`) from `backend/.env` after setup. The product seed script only inserts when the products collection is empty and will not overwrite an existing catalog.
 
+   To change the existing administrator's email and password, set `ADMIN_UPDATE_EMAIL` and `ADMIN_UPDATE_PASSWORD` in the backend environment and run `npm run update-admin` from the backend directory. This command updates the single existing administrator account, requires a password of at least 14 characters and no more than 72 UTF-8 bytes, and refuses to proceed unless exactly one administrator exists. Remove both temporary variables after it succeeds.
+
 6. Start the API and frontend in separate terminals from the project root:
 
    ```powershell
