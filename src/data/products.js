@@ -1,0 +1,1 @@
+export const categories = ['Lemon Rehydration Salts', 'Orange Rehydration Salts', 'ORS Value Packs']
