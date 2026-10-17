@@ -57,6 +57,6 @@ The optional seed command inserts demo Daystar product rows with indicative pric
 
 ## Production configuration
 
-Set `NODE_ENV=production`, `MONGODB_URI`, a private `JWT_SECRET`, the exact deployed frontend origin(s) in `FRONTEND_ORIGINS`, and the backend port in the hosting environment. Deploy the API behind HTTPS: production admin cookies are `Secure`, `HttpOnly` for the session, and `SameSite=None` for separate frontend/API origins. The API also checks exact origins and a session-bound CSRF token on writes. Set the frontend build variable `VITE_API_BASE_URL` to the deployed API origin; Vite variables are public and must never contain secrets. Configure Cloudinary credentials server-side to enable uploads. Without Cloudinary, administrators can still enter HTTPS image URLs.
+Set `NODE_ENV=production`, `MONGODB_URI`, a private `JWT_SECRET`, the exact deployed frontend origin(s) in `FRONTEND_ORIGINS`, and the backend port in the hosting environment. Deploy the API behind HTTPS. The Vercel rewrite proxies `/api` requests to the backend so admin cookies and the session-bound CSRF token use the frontend's origin. Update the API destination in `vercel.json` if the Render service URL changes. `VITE_API_BASE_URL` is used for local development only; Vite variables are public and must never contain secrets. Configure Cloudinary credentials server-side to enable uploads. Without Cloudinary, administrators can still enter HTTPS image URLs.
 
 Real `.env` files are ignored by Git. Only the `.env.example` templates contain placeholder values.
