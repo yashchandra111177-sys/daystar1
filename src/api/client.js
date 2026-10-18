@@ -28,3 +28,21 @@ apiClient.interceptors.request.use((config) => {
 export function apiErrorMessage(error, fallback = 'Something went wrong. Please try again.') {
   return error.response?.data?.message || fallback
 }
+
+export async function getWithRetry(url, config) {
+  const maxRetries = 2
+
+  for (let attempt = 0; ; attempt += 1) {
+    try {
+      return await apiClient.get(url, config)
+    } catch (error) {
+      if (config?.signal?.aborted || attempt >= maxRetries || !isTransientGetError(error)) throw error
+      await new Promise((resolve) => setTimeout(resolve, 750 * (attempt + 1)))
+    }
+  }
+}
+
+function isTransientGetError(error) {
+  if (error.response) return [502, 503, 504].includes(error.response.status)
+  return Boolean(error.request) || ['ECONNABORTED', 'ETIMEDOUT'].includes(error.code)
+}

@@ -1,7 +1,7 @@
-import { apiClient } from './client'
+import { apiClient, getWithRetry } from './client'
 
-export async function listBlogs() {
-  const { data } = await apiClient.get('/api/blogs')
+export async function listBlogs(config) {
+  const { data } = await getWithRetry('/api/blogs', config)
   return data.blogs
 }
 

@@ -697,6 +697,9 @@ h1, h2, h3, p { margin-top: 0; }
 .journal-card__link { display: inline-flex; align-items: center; gap: 6px; color: #4d7485; font-size: 10px; font-weight: 700; }
 .journal-card__link:hover { color: var(--ink); }
 .journal-state, .journal-empty { display: grid; min-height: 130px; place-content: center; gap: 5px; color: #74848c; font-size: 12px; text-align: center; }
+.journal-state--error { color: #8b3e3e; }
+.journal-state--error p { margin: 0; }
+.journal-state--error button { justify-self: center; padding: 4px 10px; border: 1px solid currentColor; border-radius: 999px; background: transparent; cursor: pointer; font-size: 11px; }
 .journal-empty p { margin: 0; color: var(--ink); font-family: var(--serif); font-size: 20px; }
 .journal-empty span { font-size: 11px; }
 .journal-index { min-height: 65vh; padding-block: 35px 90px; }

@@ -1,8 +1,8 @@
-import { apiClient } from './client'
+import { apiClient, getWithRetry } from './client'
 
 export const publicProductsApi = {
   async list(config) {
-    const { data } = await apiClient.get('/api/products', config)
+    const { data } = await getWithRetry('/api/products', config)
     return data.products
   },
   async get(id, config) {
